@@ -16,7 +16,7 @@ class BarangController extends Controller
     {
         $barang = Barang::all();
 
-        return view('admin.barang.index', compact('barang'));
+        return view('barang.index', compact('barang'));
     }
 
     /**
@@ -70,7 +70,7 @@ class BarangController extends Controller
      */
     public function edit(Barang $barang)
     {
-        return view('admin.barang.edit', compact('barang'));
+        return view('barang.edit', compact('barang'));
     }
 
     /**

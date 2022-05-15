@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('detail_pembelian', function (Blueprint $table) {
-            $table->string('no_beli',8);
-            $table->string('kd_brg',5);
+            $table->string('no_beli', 15);
+            $table->string('kd_brg', 5);
             $table->integer('qty_beli');
             $table->integer('sub_beli');
         });

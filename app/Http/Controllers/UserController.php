@@ -16,7 +16,7 @@ class UserController extends Controller
     {
         $user = User::all();
 
-        return view('admin.user.index', compact('user'));
+        return view('user.index', compact('user'));
     }
 
     /**
@@ -78,7 +78,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin.user.edit', compact('user'));
+        return view('user.edit', compact('user'));
     }
 
     /**

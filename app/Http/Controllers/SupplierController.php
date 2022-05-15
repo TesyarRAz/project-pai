@@ -16,7 +16,7 @@ class SupplierController extends Controller
     {
         $supplier = Supplier::all();
 
-        return view('admin.supplier.index', compact('supplier'));
+        return view('supplier.index', compact('supplier'));
     }
 
     /**
@@ -70,7 +70,7 @@ class SupplierController extends Controller
      */
     public function edit(Supplier $supplier)
     {
-        return view('admin.supplier.edit', compact('supplier'));
+        return view('supplier.edit', compact('supplier'));
     }
 
     /**

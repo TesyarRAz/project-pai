@@ -16,7 +16,7 @@ class AkunController extends Controller
     {
         $akun = Akun::all();
 
-        return view('admin.akun.index', compact('akun'));
+        return view('akun.index', compact('akun'));
     }
 
     /**
@@ -26,7 +26,7 @@ class AkunController extends Controller
      */
     public function create()
     {
-        return view('admin.akun.create');
+        return view('akun.create');
     }
 
     /**
@@ -68,7 +68,7 @@ class AkunController extends Controller
      */
     public function edit(Akun $akun)
     {
-        return view('admin.akun.edit', compact('akun'));
+        return view('akun.edit', compact('akun'));
     }
 
     /**

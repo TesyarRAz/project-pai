@@ -22,20 +22,18 @@
                 <label>Nama User</label>
                 <input type="text" name="name" class="form-control" value="{{ $user->name }}" readonly>
             </div>
-        </div>
-        <div class="form-group form-row">
             <div class="col-md-5">
                 <label>Email</label>
                 <input type="text" name="email" class="form-control" value="{{ $user->email }}" readonly>
             </div>
+        </div>
+        <div class="form-group form-row">
             <div class="col-md-2">
                 @foreach ($user->roles as $role)
                     <label>Akses</label>
                     <input type="text" name="akses" class="form-control" value="{{ $role->name }}" readonly>
                 @endforeach
             </div>
-        </div>
-        <div class="form-group form-row">
             <div class="col-md-2">
                 <label>Ubah Akses</label>
                 <select name="role" class="form-control" required>

@@ -13,7 +13,7 @@ class SettingController extends Controller
         $akun = Akun::All();
         $setting = Setting::All();
 
-        return view('admin.setting.index', [
+        return view('setting.index', [
             'akun' => $akun,
             'setting' => $setting
         ]);

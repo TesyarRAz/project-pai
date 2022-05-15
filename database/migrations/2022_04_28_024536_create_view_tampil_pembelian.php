@@ -15,7 +15,7 @@ return new class extends Migration
     public function up()
     {
         DB::unprepared('
-        CREATE OR REPLACE VIEW view_tampil_pembelian  AS 
+        CREATE OR REPLACE VIEW tampil_pembelian  AS 
                 SELECT barang.kd_brg AS kd_brg,
                     detail_pembelian.no_beli AS no_beli,
                     barang.nm_brg AS nm_brg,

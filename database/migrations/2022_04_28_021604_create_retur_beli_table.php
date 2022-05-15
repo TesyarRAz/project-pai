@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('retur_beli', function (Blueprint $table) {
-            $table->string('no_retur', 8);
+            $table->string('no_retur', 15);
             $table->date('tgl_retur');
             $table->integer('total_retur');
         });

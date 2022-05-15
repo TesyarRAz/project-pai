@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('detail_retur', function (Blueprint $table) {
-            $table->string('no_retur', 8);
+            $table->string('no_retur', 15);
             $table->string('kd_brg', 5);
             $table->integer('qty_retur');
             $table->integer('sub_retur');

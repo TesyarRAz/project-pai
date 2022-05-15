@@ -47,7 +47,6 @@
                     <i class="fas fa-fw fa-home"></i>
                     <span>Beranda</span></a>
             </li>
-            <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 @role('admin')
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
@@ -62,7 +61,8 @@
                                 User</a>
                             <a class="collapse-item fas fa-arrow-circle-right" href="{{ route('barang.index') }}"> Master
                                 Barang</a>
-                            <a class="collapse-item fas fa-arrow-circle-right" href="{{ route('supplier.index') }}"> Master
+                            <a class="collapse-item fas fa-arrow-circle-right" href="{{ route('supplier.index') }}">
+                                Master
                                 Supplier</a>
                             <a class="collapse-item fas fa-arrow-circle-right" href="{{ route('akun.index') }}"> Master
                                 Akun</a>
@@ -76,31 +76,40 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages1"
                     aria-expanded="true" aria-controls="collapsePages1">
                     <i class="fas fa-fw fa-folder-open"></i>
-                    <span>Menu Utama 2</span>
+                    <span>Transaksi</span>
                 </a>
+
                 <div id="collapsePages1" class="collapse" aria-labelledby="headingPages"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item fas fa-arrow-circle-right" href="#"> Sub Menu 1</a>
-                        <a class="collapse-item fas fa-arrow-circle-right" href="#"> Sub Menu 2</a>
-                        <a class="collapse-item fas fa-arrow-circle-right" href="#"> Sub Menu 3</a>
-                        <a class="collapse-item fas fa-arrow-circle-right" href="#"> Sub Menu 4</a>
-                        <a class="collapse-item fas fa-arrow-circle-right" href="#"> Sub Menu 5</a>
+                        <a class="collapse-item fas fa-arrow-circle-right"
+                            href="{{ route('pemesanan.index') }}">Pemesanan</a>
+                        <a class="collapse-item fas fa-arrow-circle-right"
+                            href="{{ route('pembelian.index') }}">Pembelian</a>
+                        <a class="collapse-item fas fa-arrow-circle-right"
+                            href="{{ route('retur.index') }}">Retur</a>
                     </div>
                 </div>
             </li>
 
-            <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Menu Utama 3</span></a>
-            </li>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2"
+                    aria-expanded="true" aria-controls="collapsePages2">
+                    <i class="fas fa-fw fa-folder-open"></i>
+                    <span>Laporan</span>
+                </a>
 
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-archive"></i>
-                    <span>Menu Utama 4</span></a>
+                <div id="collapsePages2" class="collapse" aria-labelledby="headingPages"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item fas fa-arrow-circle-right"
+                            href="{{ route('laporan.index') }}">Jurnal Umum
+                        </a>
+                        <a class="collapse-item fas fa-arrow-circle-right"
+                            href="{{ route('stok.index') }}">Stok Barang
+                        </a>
+                    </div>
+                </div>
             </li>
 
             <!-- Divider -->
@@ -234,7 +243,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Yakin ingin keluar aplikasi ?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
+                        <span aria-hidden="true">x</span>
                     </button>
                 </div>
                 <div class="modal-body">Pilih "Logout" apabila ingin keluar aplikasi</div>
@@ -253,25 +262,25 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="asset/vendor/jquery/jquery.min.js"></script>
-    <script src="asset/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/asset/vendor/jquery/jquery.min.js"></script>
+    <script src="/asset/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="asset/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/asset/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="asset/js/sb-admin-2.min.js"></script>
+    <script src="/asset/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="asset/vendor/chart.js/Chart.min.js"></script>
-    <script src="asset/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="asset/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="/asset/vendor/chart.js/Chart.min.js"></script>
+    <script src="/asset/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="/asset/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     {{-- SweeAlert --}}
     @include('sweetalert::alert')
 
     <script type="text/javascript">
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('#dataTable').DataTable({
                 scrollX: true,
             });

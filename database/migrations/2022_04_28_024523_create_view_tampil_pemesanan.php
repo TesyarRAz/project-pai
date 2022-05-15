@@ -15,13 +15,14 @@ return new class extends Migration
     public function up()
     {
         DB::unprepared('
-        CREATE OR REPLACE VIEW view_tampil_pemesanan AS 
-                SELECT temp_pemesanan.kd_brg AS kd_brg,
-                        concat(barang.nm_brg,barang.harga) AS nm_brg,
-                        temp_pemesanan.qty_pesan AS qty_pesan, 
-                        barang.harga* temp_pemesanan.qty_pesan AS sub_total 
-                FROM temp_pemesanan 
-                JOIN barang ON temp_pemesanan.kd_brg = barang.kd_brg;
+        CREATE OR REPLACE VIEW tampil_pemesanan AS 
+                SELECT detail_pesan.kd_brg AS kd_brg, 
+                    detail_pesan.no_pesan AS no_pesan, 
+                    barang.nm_brg AS nm_brg, 
+                    detail_pesan.qty_pesan AS qty_pesan, 
+                    detail_pesan.subtotal AS sub_total 
+                FROM barang 
+                JOIN detail_pesan ON detail_pesan.kd_brg = barang.kd_brg ;
         ');
     }
 
@@ -32,6 +33,5 @@ return new class extends Migration
      */
     public function down()
     {
-        
     }
 };

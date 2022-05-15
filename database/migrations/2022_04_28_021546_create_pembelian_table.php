@@ -14,11 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('pembelian', function (Blueprint $table) {
-            $table->string('no_beli', 8);
+            $table->string('no_beli', 15);
             $table->date('tgl_beli', 5);
-            $table->string('no_faktur', 10);
+            $table->string('no_faktur', 15);
             $table->integer('total_beli');
-            $table->string('no_pesan', 8);
+            $table->string('no_pesan', 15);
         });
     }
 

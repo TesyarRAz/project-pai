@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DetailRetur extends Model
+class PemesananTemp extends Model
 {
     use HasFactory;
-    
-    protected $primaryKey = 'no_retur';
+
+    protected $primaryKey = 'kd_brg';
     public $incrementing = false;
     protected $keyType = 'string';
     public $timestamps = false;
-    protected $table = "detail_retur";
-    protected $fillable=['no_retur','kd_brg','qty_retur','sub_retur'];
+    protected $table = "temp_pemesanan";
+    protected $fillable=['kd_brg','qty_pesan'];
 }
