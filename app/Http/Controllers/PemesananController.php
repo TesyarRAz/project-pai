@@ -19,10 +19,10 @@ class PemesananController extends Controller
      */
     public function index()
     {
-        $akun = Akun::All();
-        $barang = Barang::All();
-        $supplier = Supplier::All();
-        $temp_pesan = TempPesan::All();
+        $akun = Akun::all();
+        $barang = Barang::all();
+        $supplier = Supplier::all();
+        $temp_pesan = TempPesan::all();
 
         //No otomatis untuk transaksi pemesanan
         $AWAL = 'TRX';

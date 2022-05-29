@@ -14,10 +14,15 @@ class Pemesanan extends Model
     protected $keyType = 'string';
     public $timestamps = false;
     protected $table = "pemesanan";
-    protected $fillable=['no_pesan','tgl_pesan','total','kd_supp'];
+    protected $guarded = [];
 
     public function pembelian()
     {
         return $this->hasOne(Pembelian::class, 'no_pesan');
+    }
+
+    public function akun()
+    {
+        return $this->belongsTo(Akun::class, 'no_akun');
     }
 }

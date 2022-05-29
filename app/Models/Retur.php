@@ -14,5 +14,5 @@ class Retur extends Model
     protected $keyType = 'string';
     public $timestamps = false;
     protected $table = "retur_beli";
-    protected $fillable=['no_retur','tgl_retur','total_retur'];
+    protected $guarded = [];
 }

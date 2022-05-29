@@ -14,5 +14,5 @@ class DetailPesan extends Model
     protected $keyType = 'string';
     public $timestamps = false;
     protected $table = "detail_pesan";
-    protected $fillable = ['no_pesan', 'kd_brg', 'qty_pesan', 'subtotal'];
+    protected $guarded = [];
 }

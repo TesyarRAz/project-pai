@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('kd_brg', 5)->primary();
             $table->string('nm_brg', 5);
             $table->integer('harga');
+            $table->integer('stok_awal');
             $table->integer('stok');
         });
     }

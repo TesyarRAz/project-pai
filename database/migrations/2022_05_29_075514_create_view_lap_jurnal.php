@@ -15,12 +15,15 @@ return new class extends Migration
     public function up()
     {
         DB::unprepared('
-        CREATE OR REPLACE TRIGGER update_stok after INSERT ON detail_pembelian
-            FOR EACH ROW BEGIN
-                UPDATE barang
-                SET stok = stok + NEW.qty_beli
-                WHERE kd_brg = NEW.kd_brg;
-            END
+        CREATE OR REPLACE VIEW lap_jurnal AS 
+            SELECT akun.no_akun AS no_akun,
+                akun.nm_akun AS nm_akun, 
+                jurnal.tgl_jurnal AS tgl, 
+                sum(jurnal.debet) AS debet, 
+                sum(jurnal.kredit) AS kredit 
+            FROM akun 
+            JOIN jurnal ON akun.no_akun = jurnal.no_akun 
+            GROUP BY jurnal.no_jurnal
         ');
     }
 

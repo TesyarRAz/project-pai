@@ -15,12 +15,13 @@ return new class extends Migration
     public function up()
     {
         DB::unprepared('
-        CREATE OR REPLACE TRIGGER update_stok after INSERT ON detail_pembelian
-            FOR EACH ROW BEGIN
-                UPDATE barang
-                SET stok = stok + NEW.qty_beli
-                WHERE kd_brg = NEW.kd_brg;
-            END
+        CREATE OR REPLACE VIEW temp_jual AS 
+                SELECT temp_penjualan.kd_brg AS kd_brg,
+                        concat(barang.nm_brg, " ", barang.harga) AS nm_brg,
+                        temp_penjualan.qty_pesan AS qty_pesan, 
+                        barang.harga * temp_penjualan.qty_pesan AS sub_total 
+                FROM temp_penjualan
+                JOIN barang ON temp_penjualan.kd_brg = barang.kd_brg ;
         ');
     }
 

@@ -23,7 +23,7 @@ class LapStokController extends Controller
             $akun = Akun::All();
             $pdf = Pdf::loadview('laporan.print', ['laporan' => $bb, 'akun' => $akun])->setPaper('A4', 'landscape');
             return $pdf->stream();
-        } elseif ($periode == 'periode') {
+        } else if ($periode == 'periode') {
             $tglawal = $request->get('tglawal');
             $tglakhir = $request->get('tglakhir');
             $akun = Akun::All();
@@ -34,7 +34,7 @@ class LapStokController extends Controller
             $pdf = PDF::loadview('laporan.print', ['laporan' => $bb, 'akun' => $akun])->setPaper('A4', 'landscape');
             return $pdf->stream();
         }
-        
+
         $data = LaporanStok::All();
         return view('laporan.stok', ['data' => $data]);
     }

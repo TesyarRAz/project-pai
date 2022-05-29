@@ -14,5 +14,5 @@ class Akun extends Model
     protected $keyType = 'string';
     public $timestamps = false;
     protected $table = "akun";
-    protected $fillable = ['no_akun', 'nm_akun'];
+    protected $guarded = [];
 }

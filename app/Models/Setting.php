@@ -14,5 +14,5 @@ class Setting extends Model
     protected $keyType = 'string';
     public $timestamps = false;
     protected $table = "setting";
-    protected $fillable = ['id_setting', 'no_akun', 'nama_transaksi'];
+    protected $guarded = [];
 }

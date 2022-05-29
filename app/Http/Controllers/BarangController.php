@@ -41,8 +41,10 @@ class BarangController extends Controller
             'kd_brg' => 'required|unique:barang',
             'nm_brg' => 'required',
             'harga' => 'required',
-            'stok' => 'required',
+            'stok_awal' => 'required',
         ]);
+
+        $data['stok'] = $data['stok_awal'];
 
         Barang::create($data);
 
@@ -86,7 +88,7 @@ class BarangController extends Controller
             'kd_brg' => 'required',
             'nm_brg' => 'required',
             'harga' => 'required',
-            'stok' => 'required',
+            'stok_awal' => 'required',
         ]);
 
         $barang->update($data);

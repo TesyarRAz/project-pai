@@ -49,64 +49,64 @@
             </li>
             <li class="nav-item">
                 @role('admin')
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                        aria-expanded="true" aria-controls="collapsePages">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMaster">
                         <i class="fas fa-fw fa-folder-open"></i>
                         <span>Data Master</span>
                     </a>
-                    <div id="collapsePages" class="collapse" aria-labelledby="headingPages"
-                        data-parent="#accordionSidebar">
+                    <div id="collapseMaster" class="collapse" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item fas fa-arrow-circle-right" href="{{ route('user.index') }}"> Master
-                                User</a>
-                            <a class="collapse-item fas fa-arrow-circle-right" href="{{ route('barang.index') }}"> Master
-                                Barang</a>
+                            <a class="collapse-item fas fa-arrow-circle-right" href="{{ route('user.index') }}">
+                                Master User
+                            </a>
+                            <a class="collapse-item fas fa-arrow-circle-right" href="{{ route('barang.index') }}">
+                                Master Barang
+                            </a>
                             <a class="collapse-item fas fa-arrow-circle-right" href="{{ route('supplier.index') }}">
-                                Master
-                                Supplier</a>
-                            <a class="collapse-item fas fa-arrow-circle-right" href="{{ route('akun.index') }}"> Master
-                                Akun</a>
-                            <a class="collapse-item fas fa-arrow-circle-right" href="{{ route('setting.index') }}"> Master
-                                Setting Akun</a>
+                                Master Supplier
+                            </a>
+                            <a class="collapse-item fas fa-arrow-circle-right" href="{{ route('akun.index') }}">
+                                Master Akun
+                            </a>
+                            {{-- <a class="collapse-item fas fa-arrow-circle-right" href="{{ route('setting.index') }}">
+                                Master Setting Akun
+                            </a> --}}
                         </div>
                     </div>
                 @endrole
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages1"
-                    aria-expanded="true" aria-controls="collapsePages1">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTransaksi">
                     <i class="fas fa-fw fa-folder-open"></i>
                     <span>Transaksi</span>
                 </a>
 
-                <div id="collapsePages1" class="collapse" aria-labelledby="headingPages"
-                    data-parent="#accordionSidebar">
+                <div id="collapseTransaksi" class="collapse" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item fas fa-arrow-circle-right"
                             href="{{ route('pemesanan.index') }}">Pemesanan</a>
                         <a class="collapse-item fas fa-arrow-circle-right"
                             href="{{ route('pembelian.index') }}">Pembelian</a>
                         <a class="collapse-item fas fa-arrow-circle-right"
-                            href="{{ route('retur.index') }}">Retur</a>
+                            href="{{ route('penjualan.index') }}">Penjualan</a>
+                        {{-- <a class="collapse-item fas fa-arrow-circle-right"
+                            href="{{ route('retur.index') }}">Retur</a> --}}
                     </div>
                 </div>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2"
-                    aria-expanded="true" aria-controls="collapsePages2">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLaporan">
                     <i class="fas fa-fw fa-folder-open"></i>
                     <span>Laporan</span>
                 </a>
 
-                <div id="collapsePages2" class="collapse" aria-labelledby="headingPages"
-                    data-parent="#accordionSidebar">
+                <div id="collapseLaporan" class="collapse" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item fas fa-arrow-circle-right"
-                            href="{{ route('laporan.index') }}">Jurnal Umum
+                        <a class="collapse-item fas fa-arrow-circle-right" href="{{ route('laporan.index') }}">
+                            Jurnal Umum
                         </a>
-                        <a class="collapse-item fas fa-arrow-circle-right"
-                            href="{{ route('stok.index') }}">Stok Barang
+                        <a class="collapse-item fas fa-arrow-circle-right" href="{{ route('stok.index') }}">
+                            Stok Barang
                         </a>
                     </div>
                 </div>

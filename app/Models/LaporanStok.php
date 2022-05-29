@@ -10,5 +10,5 @@ class LaporanStok extends Model
     use HasFactory;
 
     protected $table = "lap_stok";
-    protected $fillable = ['kd_brg','nm_brg','harga','stok','beli','retur'];
+    protected $guarded = [];
 }

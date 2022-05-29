@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Akun;
 use App\Models\Beli;
 use App\Models\DetailPembelian;
 use App\Models\Jurnal;
@@ -102,18 +103,7 @@ class PembelianController extends Controller
      * @param  \App\Models\Pembelian  $pembelian
      * @return \Illuminate\Http\Response
      */
-    public function show(Pembelian $pembelian)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Pembelian  $pembelian
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function show($pembelian)
     {
         $AWAL = 'FKT';
         $bulanRomawi = array("", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII");
@@ -124,11 +114,11 @@ class PembelianController extends Controller
         $noUrutAkhirj = Jurnal::max('no_jurnal');
         $formatj = sprintf("%03s", abs((int)$noUrutAkhirj + 1)) . '/' . $AWALJurnal . '/' . $bulanRomawij[date('n')] . '/' . date('Y');
 
-        $decrypted = Crypt::decryptString($id);
+        $decrypted = Crypt::decryptString($pembelian);
         $detail = Beli::where('no_pesan', $decrypted)->get();
-        $pemesanan = Pemesanan::where('no_pesan', $decrypted)->get();
-        $akunkas = Setting::where('nama_transaksi', 'Kas')->get();
-        $akunpembelian = Setting::where('nama_transaksi', 'Pembelian')->get();
+        $pemesanan = Pemesanan::find($decrypted);
+
+        $akun = Akun::all();
 
         return view('pembelian.beli', [
             'detail' => $detail,
@@ -136,14 +126,24 @@ class PembelianController extends Controller
             'no_pesan' => $decrypted,
             'pemesanan' => $pemesanan,
             'formatj' => $formatj,
-            'kas' => $akunkas,
-            'pembelian' => $akunpembelian,
+            'akun' => $akun,
         ]);
     }
 
-    public function pdf($id)
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Pembelian  $pembelian
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Pembelian $id)
     {
-        $decrypted = Crypt::decryptString($id);
+        
+    }
+
+    public function pdf($pembelian)
+    {
+        $decrypted = Crypt::decryptString($pembelian);
 
         $detail      = Beli::where('no_pesan', $decrypted)->get();
         $supplier    = Supplier::all();

@@ -24,6 +24,7 @@
                             <th>Kode Barang</th>
                             <th>Nama Barang</th>
                             <th>Harga Barang</th>
+                            <th>Stok Awal</th>
                             <th>Stok Barang</th>
                             <th>Aksi</th>
                         </tr>
@@ -34,7 +35,8 @@
                                 <td>{{ $brg->kd_brg }}</td>
                                 <td>{{ $brg->nm_brg }}</td>
                                 <td>{{ number_format($brg->harga) }}</td>
-                                <td>{{ number_format($brg->stok) }}</td>
+                                <td>{{ $brg->stok_awal }}</td>
+                                <td>{{ $brg->stok }}</td>
                                 <td>
                                     <a href="{{ route('barang.edit', [$brg->kd_brg]) }}"
                                         class="btn btn-sm btn-success shadow-sm">

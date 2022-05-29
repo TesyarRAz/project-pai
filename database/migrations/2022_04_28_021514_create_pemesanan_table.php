@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('tgl_pesan');
             $table->integer('total');
             $table->string('kd_supp', 5);
+            $table->string('no_akun', 5);
         });
     }
 

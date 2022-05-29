@@ -8,28 +8,30 @@
     <form action="{{ route('pembelian.store') }}" method="POST">
         @csrf
 
+        <input type="hidden" name="akun" value="{{ $pemesanan->akun->no_akun }}" class="form-control">
+        <input type="hidden" name="no_jurnal" value="{{ $formatj }}" class="form-control">
+
         <div class="form-group col-sm-4">
             <label>No Pembelian</label>
-            @foreach ($kas as $ks)
-                <input type="hidden" name="akun" value="{{ $ks->no_akun }}" class="form-control">
-            @endforeach
-            @foreach ($pembelian as $bli)
-                <input type="hidden" name="pembelian" value="{{ $bli->no_akun }}" class="form-control">
-            @endforeach
-            <input type="hidden" name="no_jurnal" value="{{ $formatj }}" class="form-control">
-            <input type="text" name="no_faktur" value="{{ $format }}" class="form-control">
+            <input type="text" name="no_faktur" value="{{ $format }}" class="form-control" readonly>
         </div>
-        @foreach ($pemesanan as $psn)
-            <div class="form-group col-sm-4">
-                <label>No Pemesanan</label>
-                <input type="text" name="no_pesan" value="{{ $psn->no_pesan }}" class="form-control">
-            </div>
-
-            <div class="form-group col-sm-4">
-                <label>Tanggal Pemesanan</label>
-                <input type="text" min="1" name="tgl" value="{{ $psn->tgl_pesan }}" class="form-control" require>
-            </div>
-        @endforeach
+        <div class="form-group col-sm-4">
+            <label>No Pemesanan</label>
+            <input type="text" name="no_pesan" value="{{ $pemesanan->no_pesan }}" class="form-control" readonly>
+        </div>
+        <div class="form-group col-sm-4">
+            <label>Tanggal Pemesanan</label>
+            <input type="text" name="tgl" value="{{ $pemesanan->tgl_pesan }}" class="form-control" readonly>
+        </div>
+        <div class="form-group col-sm-4">
+            <label>Akun Pembelian</label>
+            <select name="pembelian" class="form-control" required>
+                <option value="" selected disabled>Pilih</option>
+                @foreach ($akun as $a)
+                    <option value="{{ $a->no_akun }}">{{ $a->no_akun }} - {{ $a->nm_akun }}</option>
+                @endforeach
+            </select>
+        </div>
 
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <div class="card-body">
@@ -41,7 +43,6 @@
                                 <th>Nama Barang</th>
                                 <th>Quantity</th>
                                 <th>Sub Total</th>
-                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -61,15 +62,7 @@
                                     </td>
                                     <td>
                                         <input name="sub_beli[]" class="form-control" type="hidden"
-                                            value="{{ $temp->sub_total }}" readonly>{{ $temp->sub_total }}
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('pemesanan.destroy', $temp->kd_brg) }}"
-                                            onclick="return confirm('Yakin Ingin menghapus data?')"
-                                            class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
-                                            <i class="fas fa-trash-alt fa-sm text-white-50"></i>
-                                            Hapus
-                                        </a>
+                                            value="{{ $temp->sub_total }}" readonly>{{ number_format($temp->sub_total) }}
                                     </td>
                                 </tr>
                                 @php($total += $temp->sub_total)

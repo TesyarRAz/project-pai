@@ -8,6 +8,7 @@ use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\LapStokController;
 use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\PemesananController;
+use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\ReturController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SupplierController;
@@ -27,9 +28,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::redirect('/', '/home');
 
 Auth::routes();
 
@@ -51,6 +50,8 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('pembelian', PembelianController::class);
     Route::get('pembelian/{pembelian}/pdf', [PembelianController::class, 'pdf'])->name('pembelian.pdf');
+
+    Route::resource('penjualan', PenjualanController::class);
 
     Route::resource('retur', ReturController::class);
 

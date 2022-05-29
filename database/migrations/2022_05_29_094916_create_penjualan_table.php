@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -14,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        DB::unprepared('
-        CREATE OR REPLACE TRIGGER update_stok after INSERT ON detail_pembelian
-            FOR EACH ROW BEGIN
-                UPDATE barang
-                SET stok = stok + NEW.qty_beli
-                WHERE kd_brg = NEW.kd_brg;
-            END
-        ');
+        Schema::create('penjualan', function (Blueprint $table) {
+            $table->string('no_jual', 14)->primary();
+            $table->date('tgl_jual');
+            $table->integer('total');
+            $table->string('kd_supp', 5);
+            $table->string('no_akun', 5);
+        });
     }
 
     /**
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        
+        Schema::dropIfExists('penjualan');
     }
 };

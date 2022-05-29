@@ -42,6 +42,7 @@ class DetailPesanController extends Controller
             'tgl_pesan' => $request->tgl_pesan,
             'total' => $request->total,
             'kd_supp' => $request->kd_supp,
+            'no_akun' => $request->no_akun,
         ]);
 
         //SIMPAN DATA KE TABEL DETAIL
@@ -66,7 +67,7 @@ class DetailPesanController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Pemesanan  $Pemesanan
+     * @param  \App\Models\Pemesanan $detail
      * @return \Illuminate\Http\Response
      */
     public function show(Pemesanan $detail)
@@ -77,7 +78,7 @@ class DetailPesanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Pemesanan  $Pemesanan
+     * @param  \App\Models\Pemesanan $detail
      * @return \Illuminate\Http\Response
      */
     public function edit(Pemesanan $detail)
@@ -89,7 +90,7 @@ class DetailPesanController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Pemesanan  $Pemesanan
+     * @param  \App\Models\Pemesanan $detail
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Pemesanan $detail)
@@ -100,7 +101,7 @@ class DetailPesanController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Pemesanan  $Pemesanan
+     * @param  \App\Models\Pemesanan $detail
      * @return \Illuminate\Http\Response
      */
     public function destroy($detail)

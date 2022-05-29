@@ -28,7 +28,7 @@
             <tr>
 
                 <th width="5%">Tanggal Transaksi</th>
-                <th width="15%">Nama Akun/Perkiraan</th>
+                <th width="15%">Nama Akun</th>
                 <th width="5%">Debet</th>
                 <th width="5%">Kredit</th>
             </tr>
@@ -37,26 +37,24 @@
             @php
                 $subtotal1 = 0;
                 $subtotal2 = 0;
+                $tanggal = null;
             @endphp
-            @foreach ($laporan as $akn)
-                <!-- <tr>
-                 <td colspan="5">{{ $akn->tgl_jurnal }}</td>
-            </tr> -->
-                @foreach ($laporan as $bb)
-                    <!-- pembuatan prulangan bersarang -->
-                    @if ($loop->parent->first)
-                        <tr>
-
-                            <td>{{ $bb->tgl_jurnal }}</td>
-                            <td>{{ $bb->no_jurnal }} {{ $bb->keterangan }}</td>
-                            <td>{{ number_format($bb->debet) }}</td>
-                            <td>{{ number_format($bb->kredit) }}</td>
-                        </tr>
-                        <!-- hitung total debet dan kredit -->
-                        {{ $subtotal1 += $bb->debet }};
-                        {{ $subtotal2 += $bb->kredit }};
+            @foreach ($laporan as $lap)
+            <tr>
+                <td>
+                    @if ($tanggal != $lap->tgl_jurnal)
+                        @php ($tanggal = $lap->tgl_jurnal)
+                        {{ $lap->tgl_jurnal }}
                     @endif
-                @endforeach
+                </td>
+                <td>{{ $lap->no_jurnal }} - {{ $lap->akun->nm_akun }}</td>
+                <td>{{ number_format($lap->debet) }}</td>
+                <td>{{ number_format($lap->kredit) }}</td>
+
+                <!-- hitung total debet dan kredit -->
+                {{ $subtotal1 += $lap->debet }};
+                {{ $subtotal2 += $lap->kredit }};
+            </tr>
             @endforeach
             <tr>
 

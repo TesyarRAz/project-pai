@@ -19,22 +19,29 @@ class LaporanController extends Controller
     {
         $periode = $request->get('periode');
 
-        if ($periode == 'All') {
-            $bb = Laporan::All();
-            $akun = Akun::All();
-            $pdf = Pdf::loadview('laporan.cetak', ['laporan' => $bb, 'akun' => $akun])->setPaper('A4', 'landscape');
+        if ($periode == 'all')
+        {
+            $laporan = Jurnal::with('akun')
+            ->orderBy('tgl_jurnal', 'ASC')
+            ->get();
 
-            return $pdf->stream();
-        } elseif ($periode == 'periode') {
+            return Pdf::loadview('laporan.cetak', compact('laporan'))
+            ->setPaper('A4', 'landscape')
+            ->stream();
+        }
+        else if ($periode == 'periode')
+        {
             $tglawal = $request->get('tglawal');
             $tglakhir = $request->get('tglakhir');
-            $akun = Akun::All();
-            $bb = Jurnal::whereBetween('tgl_jurnal', [$tglawal, $tglakhir])
-                ->orderby('tgl_jurnal', 'ASC')
-                ->get();
-            $pdf = Pdf::loadview('laporan.cetak', ['laporan' => $bb, 'akun' => $akun])->setPaper('A4', 'landscape');
+            
+            $laporan = Jurnal::with('akun')
+            ->whereBetween('tgl_jurnal', [$tglawal, $tglakhir])
+            ->orderBy('tgl_jurnal', 'ASC')
+            ->get();
 
-            return $pdf->stream();
+            return Pdf::loadview('laporan.cetak', compact('laporan'))
+            ->setPaper('A4', 'landscape')
+            ->stream();
         }
 
         return view('laporan.index');

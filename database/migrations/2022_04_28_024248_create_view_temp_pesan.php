@@ -19,9 +19,9 @@ return new class extends Migration
                 SELECT temp_pemesanan.kd_brg AS kd_brg,
                         concat(barang.nm_brg, " ", barang.harga) AS nm_brg,
                         temp_pemesanan.qty_pesan AS qty_pesan, 
-                        barang.harga* temp_pemesanan.qty_pesan AS sub_total 
-                FROM (temp_pemesanan join barang) 
-                WHERE temp_pemesanan.kd_brg = barang.kd_brg ;
+                        barang.harga * temp_pemesanan.qty_pesan AS sub_total 
+                FROM temp_pemesanan
+                JOIN barang ON temp_pemesanan.kd_brg = barang.kd_brg ;
         ');
     }
 

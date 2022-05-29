@@ -14,5 +14,5 @@ class Supplier extends Model
     protected $keyType = 'string';
     public $timestamps = false;
     protected $table = "supplier";
-    protected $fillable = ['kd_supp', 'nm_supp', 'alamat', 'telepon'];
+    protected $guarded = [];
 }

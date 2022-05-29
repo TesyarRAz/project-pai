@@ -14,5 +14,5 @@ class PemesananTemp extends Model
     protected $keyType = 'string';
     public $timestamps = false;
     protected $table = "temp_pemesanan";
-    protected $fillable=['kd_brg','qty_pesan'];
+    protected $guarded = [];
 }

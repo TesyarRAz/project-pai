@@ -15,10 +15,10 @@ return new class extends Migration
     public function up()
     {
         DB::unprepared('
-        CREATE OR REPLACE TRIGGER update_stok after INSERT ON detail_pembelian
+        CREATE OR REPLACE TRIGGER decrease_stok after INSERT ON detail_penjualan
             FOR EACH ROW BEGIN
                 UPDATE barang
-                SET stok = stok + NEW.qty_beli
+                SET stok = stok + NEW.qty_jual
                 WHERE kd_brg = NEW.kd_brg;
             END
         ');

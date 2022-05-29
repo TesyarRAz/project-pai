@@ -14,5 +14,5 @@ class Pembelian extends Model
     protected $keyType = 'string';
     public $timestamps = false;
     protected $table = "pembelian";
-    protected $fillable = ['no_beli', 'tgl_beli', 'no_faktur', 'total_beli', 'no_pesan'];
+    protected $guarded = [];
 }

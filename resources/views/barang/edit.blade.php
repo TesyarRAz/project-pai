@@ -29,8 +29,8 @@
                 <input type="text" name="harga" class="form-control" value="{{ $barang->harga }}">
             </div>
             <div class="col-md-5">
-                <label>Stok</label>
-                <input type="text" name="stok" class="form-control" value="{{ $barang->stok }}">
+                <label>Stok Awal</label>
+                <input type="text" name="stok_awal" class="form-control" value="{{ $barang->stok }}">
             </div>
         </div>
     </div>

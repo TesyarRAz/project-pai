@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Barang extends Model
+class PenjualanTemp extends Model
 {
     use HasFactory;
 
@@ -13,6 +13,6 @@ class Barang extends Model
     public $incrementing = false;
     protected $keyType = 'string';
     public $timestamps = false;
-    protected $table = "barang";
+    protected $table = "temp_penjualan";
     protected $guarded = [];
 }

@@ -14,5 +14,10 @@ class Jurnal extends Model
     protected $keyType = 'string';
     public $timestamps = false;
     protected $table = "jurnal";
-    protected $fillable = ['no_jurnal', 'tgl_jurnal', 'no_akun', 'debet', 'kredit'];
+    protected $guarded = [];
+
+    public function akun()
+    {
+        return $this->belongsTo(Akun::class, 'no_akun');
+    }
 }
