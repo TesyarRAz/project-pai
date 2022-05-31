@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\DetailJualController;
 use App\Http\Controllers\DetailPesanController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LaporanController;
@@ -52,6 +53,8 @@ Route::middleware('auth')->group(function () {
     Route::get('pembelian/{pembelian}/pdf', [PembelianController::class, 'pdf'])->name('pembelian.pdf');
 
     Route::resource('penjualan', PenjualanController::class);
+    Route::resource('detail-jual', DetailJualController::class);
+    Route::get('penjualan/{penjualan}/pdf', [PenjualanController::class, 'pdf'])->name('penjualan.pdf');
 
     Route::resource('retur', ReturController::class);
 

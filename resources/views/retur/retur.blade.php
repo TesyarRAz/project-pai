@@ -2,7 +2,7 @@
 @section('content')
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
 
-        <h1 class="h3 mb-0 text-gray-800">Pembelian </h1>
+        <h1 class="h3 mb-0 text-gray-800">Retur </h1>
     </div>
     <hr>
     <form action="{{ route('retur.store') }}" method="POST">
@@ -10,18 +10,32 @@
 
         <div class="form-group col-sm-4">
             <label>No Retur</label>
-            @foreach ($kas as $ks)
-                <input type="hidden" name="kas" value="{{ $ks->no_akun }}" class="form-control">
-            @endforeach
-            @foreach ($retur as $rtr)
-                <input type="hidden" name="retur" value="{{ $rtr->no_akun }}" class="form-control">
-            @endforeach
             <input type="hidden" name="no_jurnal" value="{{ $formatj }}" class="form-control">
             <input type="text" name="no_retur" value="{{ $format }}" class="form-control" readonly>
         </div>
         <div class="form-group col-sm-4">
             <label>Tanggal Retur</label>
-            <input type="date" min="1" name="tgl" class="form-control" require>
+            <input type="date" value="{{ now()->format('Y-m-d') }}" name="tgl" class="form-control" require>
+        </div>
+        <div class="form-group col-sm-4">
+            <label>Akun Kas</label>
+            <select name="kas" class="form-control" required>
+                <option value="" selected disabled>Pilih</option>
+                @foreach ($akun as $a)
+                    <option value="{{ $a->no_akun }}">{{ $a->no_akun }} - {{ $a->nm_akun }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+        <div class="form-group col-sm-4">
+            <label>Akun Retur</label>
+            <select name="retur" class="form-control" required>
+                <option value="" selected disabled>Pilih</option>
+                @foreach ($akun as $a)
+                    <option value="{{ $a->no_akun }}">{{ $a->no_akun }} - {{ $a->nm_akun }}
+                    </option>
+                @endforeach
+            </select>
         </div>
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <div class="card-body">

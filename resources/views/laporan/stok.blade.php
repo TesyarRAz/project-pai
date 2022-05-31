@@ -14,9 +14,10 @@
                                         <th>Kode</th>
                                         <th>Nama</th>
                                         <th>Stok Awal</th>
-                                        <th>Beli</th>
+                                        <th>Stok Masuk</th>
                                         <th>Retur</th>
-                                        <th>Stok Total (Stok+Beli-retur)</th>
+                                        <th>Stok Keluar</th>
+                                        <th>Stok Total (Stok+Beli-retur-keluar)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -27,7 +28,8 @@
                                         <td>{{ number_format($item->stok, 0, ',', '.') }}</td>
                                         <td>{{ number_format($item->beli, 0, ',', '.') }}</td>
                                         <td>{{ number_format($item->retur, 0, ',', '.') }}</td>
-                                        <td>{{ number_format($item->stok + $item->beli - $item->retur) }}</td>
+                                        <td>{{ number_format($item->keluar, 0, ',', '.') }}</td>
+                                        <td>{{ number_format($item->stok + $item->beli - $item->retur - $item->keluar) }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>

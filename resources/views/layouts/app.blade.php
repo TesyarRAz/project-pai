@@ -88,8 +88,8 @@
                             href="{{ route('pembelian.index') }}">Pembelian</a>
                         <a class="collapse-item fas fa-arrow-circle-right"
                             href="{{ route('penjualan.index') }}">Penjualan</a>
-                        {{-- <a class="collapse-item fas fa-arrow-circle-right"
-                            href="{{ route('retur.index') }}">Retur</a> --}}
+                        <a class="collapse-item fas fa-arrow-circle-right"
+                            href="{{ route('retur.index') }}">Retur</a>
                     </div>
                 </div>
             </li>
@@ -286,6 +286,8 @@
             });
         });
     </script>
+
+    @stack('script')
 </body>
 
 </html>

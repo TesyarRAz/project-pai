@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Akun;
 use App\Models\Beli;
 use App\Models\DetailRetur;
 use App\Models\Jurnal;
@@ -15,11 +16,6 @@ use Illuminate\Support\Facades\DB;
 
 class ReturController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $pembelian = Pembelian::All();
@@ -27,22 +23,6 @@ class ReturController extends Controller
         return view('retur.index', ['pembelian' => $pembelian]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         if (Retur::where('no_retur', $request->no_retur)->exists()) {
@@ -96,23 +76,6 @@ class ReturController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Retur  $retur
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Retur $retur)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Retur  $retur
-     * @return \Illuminate\Http\Response
-     */
     public function edit($retur)
     {
         $AWAL = 'RTR';
@@ -130,32 +93,16 @@ class ReturController extends Controller
         $decrypted = Crypt::decryptString($retur);
         $detail      = DB::table('tampil_pembelian')->where('no_beli', $decrypted)->get();
         $pemesanan   = Pemesanan::where('no_pesan', $decrypted)->get();
-        $akunkas      = Setting::where('nama_transaksi', 'Kas')->get();
-        $akunretur    = Setting::where('nama_transaksi', 'Retur')->get();
 
-        return view('retur.beli', ['beli' => $detail, 'format' => $format, 'no_pesan' => $decrypted, 'pemesanan' => $pemesanan, 'formatj' => $formatj, 'kas' => $akunkas, 'retur' => $akunretur]);
-    }
+        $akun = Akun::all();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Retur  $retur
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Retur $retur)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Retur  $retur
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Retur $retur)
-    {
-        //
+        return view('retur.retur', [
+            'beli' => $detail, 
+            'format' => $format, 
+            'no_pesan' => $decrypted, 
+            'pemesanan' => $pemesanan, 
+            'formatj' => $formatj,
+            'akun' => $akun,
+        ]);
     }
 }

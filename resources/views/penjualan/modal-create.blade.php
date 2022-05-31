@@ -1,11 +1,11 @@
-<form action="{{ route('pemesanan.store') }}" method="post" class="modal fade" id="createModal" tabindex="-1"
+<form action="{{ route('penjualan.store') }}" method="post" class="modal fade" id="createModal" tabindex="-1"
     role="dialog">
     @csrf
 
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalScrollableTitle">Tambah Barang</h5>
+                <h5 class="modal-title">Tambah Pesanan</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -22,13 +22,13 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>QTY</label>
+                    <label>Qty</label>
                     <input type="number" min="1" name="qty" class="form-control">
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                <button type="submit" class="btn btn-primary">Tambah Barang</button>
+                <button type="submit" class="btn btn-primary">Tambah</button>
             </div>
         </div>
     </div>

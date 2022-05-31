@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DetailJual extends Model
+class Jual extends Model
 {
     use HasFactory;
 
@@ -13,6 +13,6 @@ class DetailJual extends Model
     public $incrementing = false;
     protected $keyType = 'string';
     public $timestamps = false;
-    protected $table = "detail_jual";
+    protected $table = "tampil_penjualan";
     protected $guarded = [];
 }

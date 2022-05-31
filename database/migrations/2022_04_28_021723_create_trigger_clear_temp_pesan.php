@@ -18,7 +18,7 @@ return new class extends Migration
         CREATE OR REPLACE TRIGGER clear_tem_pesan AFTER INSERT ON detail_pesan
             FOR EACH ROW
             BEGIN
-                DELETE FROM temp_pemesanan;
+                DELETE FROM temp_pemesanan WHERE kd_brg = new.kd_brg;
             END
         ');
     }

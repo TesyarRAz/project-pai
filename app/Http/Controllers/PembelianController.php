@@ -16,11 +16,6 @@ use Illuminate\Support\Facades\Crypt;
 
 class PembelianController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $pemesanan = Pemesanan::whereDoesntHave('pembelian')->get();
@@ -28,22 +23,6 @@ class PembelianController extends Controller
         return view('pembelian.index', compact('pemesanan'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         if (Pembelian::where('no_pesan', $request->no_pesan)->exists()) {
@@ -97,12 +76,6 @@ class PembelianController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Pembelian  $pembelian
-     * @return \Illuminate\Http\Response
-     */
     public function show($pembelian)
     {
         $AWAL = 'FKT';
@@ -130,17 +103,6 @@ class PembelianController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Pembelian  $pembelian
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Pembelian $id)
-    {
-        
-    }
-
     public function pdf($pembelian)
     {
         $decrypted = Crypt::decryptString($pembelian);
@@ -152,28 +114,5 @@ class PembelianController extends Controller
         $pdf = Pdf::loadView('laporan.faktur', ['detail' => $detail, 'order' => $pemesanan, 'supp' => $supplier, 'noorder' => $decrypted]);
 
         return $pdf->stream();
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Pembelian  $pembelian
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Pembelian $pembelian)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Pembelian  $pembelian
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Pembelian $pembelian)
-    {
-        //
     }
 }

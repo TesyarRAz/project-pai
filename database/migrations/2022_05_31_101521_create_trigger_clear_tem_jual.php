@@ -15,13 +15,11 @@ return new class extends Migration
     public function up()
     {
         DB::unprepared('
-        CREATE OR REPLACE VIEW temp_jual AS 
-                SELECT temp_penjualan.kd_brg AS kd_brg,
-                        concat(barang.nm_brg, " ", barang.harga) AS nm_brg,
-                        temp_penjualan.qty_jual AS qty_jual, 
-                        barang.harga * temp_penjualan.qty_jual AS sub_total 
-                FROM temp_penjualan
-                JOIN barang ON temp_penjualan.kd_brg = barang.kd_brg ;
+        CREATE OR REPLACE TRIGGER clear_tem_jual AFTER INSERT ON detail_jual
+            FOR EACH ROW
+            BEGIN
+                DELETE FROM temp_penjualan WHERE kd_brg = new.kd_brg;
+            END
         ');
     }
 
