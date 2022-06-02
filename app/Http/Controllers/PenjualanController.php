@@ -79,7 +79,7 @@ class PenjualanController extends Controller
         $decrypted = Crypt::decryptString($penjualan);
 
         $detail      = Jual::where('no_jual', $decrypted)->get();
-        $penjualan   = Penjualan::where('no_jual', $decrypted)->get();
+        $penjualan   = Penjualan::where('no_jual', $decrypted)->first();
         
         $pdf = Pdf::loadView('laporan.invoice', [
             'detail' => $detail, 

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('total');
             $table->string('kd_supp', 5);
             $table->string('no_akun', 5);
+            $table->string('nama_pembeli');
         });
     }
 

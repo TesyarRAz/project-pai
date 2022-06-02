@@ -17,6 +17,14 @@
                 <div class="col-md-12">
                     <div class="row">
                         <div class="form-group col-md-4">
+                            <label>Nama Pembeli</label>
+                            <input type="text" name="nama_pembeli" class="form-control" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="form-group col-md-4">
                             <label>No Faktur</label>
 
                             <input type="text" name="no_jual" value="{{ $formatnya }}" class="form-control">

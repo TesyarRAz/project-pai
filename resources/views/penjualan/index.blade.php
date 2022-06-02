@@ -19,6 +19,7 @@
                         <tr>
                             <th width="15%">No Penjualan</th>
                             <th>Tanggal Jual</th>
+                            <th>Nama Pembeli</th>
                             <th width="30%">Aksi</th>
                         </tr>
                     </thead>
@@ -27,6 +28,7 @@
                             <tr>
                                 <td width="15%">{{ $jual->no_jual }}</td>
                                 <td>{{ $jual->tgl_jual }}</td>
+                                <td>{{ $jual->nama_pembeli }}</td>
                                 <td width="30%">
                                     <a href="{{ route('penjualan.pdf', Crypt::encryptString($jual->no_jual)) }}"
                                         target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm">

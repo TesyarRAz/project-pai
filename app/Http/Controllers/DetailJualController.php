@@ -17,6 +17,7 @@ class DetailJualController extends Controller
             'tgl_jual' => $request->tgl_jual,
             'total' => $request->total,
             'no_akun' => $request->no_akun,
+            'nama_pembeli' => $request->nama_pembeli,
         ]);
 
         //SIMPAN DATA KE TABEL DETAIL

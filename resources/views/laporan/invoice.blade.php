@@ -121,16 +121,8 @@
                     <table>
                         <tr>
                             <td>
-                                {{-- @foreach ($order as $pesan)
-                                    @foreach ($supp as $sp)
-                                        @if ($pesan->kd_supp == $sp->kd_supp)
-                                            <strong>PENERIMA</strong><br>
-                                            {{ $sp->nm_supp }}<br>
-                                            {{ $sp->alamat }}<br>
-                                            {{ $sp->telepon }}<br>
-                                        @endif
-                                    @endforeach
-                                @endforeach --}}
+                                <strong>PEMBELI</strong><br>
+                                {{ $order->nama_pembeli }}
                             </td>
                             <td>
                                 <strong>PENJUAL</strong><br>
