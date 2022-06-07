@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('no_jual', 14)->primary();
             $table->date('tgl_jual');
             $table->integer('total');
-            $table->string('kd_supp', 5);
             $table->string('no_akun', 5);
             $table->string('nama_pembeli');
         });
